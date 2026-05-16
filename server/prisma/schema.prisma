@@ -56,6 +56,7 @@ model Annonce {
   bienId          String     @unique
   bien            Bien       @relation(fields: [bienId], references: [id])
   messages        Message[]
+  favoris         Favori[]
   createdAt       DateTime   @default(now())
 }
 
@@ -84,5 +85,6 @@ model Favori {
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   annonceId String
+  annonce   Annonce  @relation(fields: [annonceId], references: [id])
   createdAt DateTime @default(now())
 }
